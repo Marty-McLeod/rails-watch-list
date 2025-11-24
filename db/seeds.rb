@@ -23,8 +23,8 @@ puts "Movie count: #{data["results"].length}"
 movies = data["results"]
 puts "--" * 20
 puts "CLEARING RECORDS in Movies DB..."
-records = Movie.all
-records.destroy
+Movie.destroy_all
+
 puts "RECORDS FOUND: #{Movie.count}"
 puts "==" * 20
 
@@ -50,7 +50,7 @@ puts "#{Movie.count} records created!"
 records = Movie.all
 
 records.each do |r|
-  puts "#{r.id}: #{r.name}, #{r.overview[0..20]}… #{r.poster_url}, R:#{r.rating}"
+  puts "#{r.id}: #{r.title}, #{r.overview[0..20]}… #{r.poster_url}, R:#{r.rating}"
 end
 
-pust ("====== DONE =======")
+puts ("====== DONE =======")
