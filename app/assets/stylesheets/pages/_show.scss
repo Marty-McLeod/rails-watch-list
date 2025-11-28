@@ -1,0 +1,20 @@
+.banner {
+    height: 300px;
+    background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), image-url("banner-2.jpg");
+    background-position: center;
+    object-fit: cover;
+    text-align: center;
+    align-content: center;
+    
+    h1 {
+        font-size: 3em;
+    }
+  
+}
+
+div .badge-moviecount {
+    position: absolute;
+    right: 20px;
+    top: 80px;
+    padding: 12px 8px;
+}  
