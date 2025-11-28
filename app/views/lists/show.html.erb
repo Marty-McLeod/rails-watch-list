@@ -34,15 +34,16 @@
 
     <div class="row">
 
-        <div class="col-md-6 col-sm-10">
+        <div class="col-md-6 col-sm-12">
+            <!-- Display reviews in 1/2 of parent container on large scr., full width on mobile -->
             <h3>Reviews</h3>
-            <% if @reviews.count > 0 %>
-                <% @reviews.each do |r| %>
-                    <div class="border-bottom">
+            <% if !@list.reviews.empty? %>
+                <% @list.reviews.each do |r| %>
+                    <div class="border-bottom mt-3 me-3">
                         <p><% r.rating.times do %>
-                            <i class="fa-solid fa-star" style="color: darkorange;"></i>
+                            <i class="fa-solid fa-star" style="color: gold;"></i>
                             <% end %>
-                            <small class="text-dark-subtle"><%= distance_of_time_in_words_to_now(r.created_at) %> ago</small>
+                            <small class="text-muted fst-italic"><%= distance_of_time_in_words_to_now(r.created_at) %> ago</small>
                         </p>
                         <p class="fw-medium"><%= r.comment %></p>
                     </div>
@@ -51,27 +52,26 @@
                 <h3 class="text-warning">(No reviews yet!)</h3>
             <% end %>
         </div>
-
-        <div class="col-md-6 col-sm-10 bg-white rounded p-3">
-            <h4 class="mt-3">Add your review</h4>
+        <!-- Display new review form in 1/2 of parent container on large scr., full width on mobile -->
+        <div class="col-md-6 col-sm-12 bg-white rounded p-3" style="min-height: 300px; max-height: 300px;">
+            <h4>Add your review</h4>
             <%= simple_form_for [@list, @review] do |review| %>
                 <%= review.input :comment, placeholder: "Add your review here…" %>
-                <%= review.input :rating, as: :select, collection: (1..5), required: true %>
-                <%= review.submit class: "btn btn-primary" %>
+                <%= review.input :rating, as: :select, collection: (1..5), required: true, selected: 5 %>
+                <%= review.submit class: "btn btn-primary rounded" %>
             <% end %>            
         </div>
     </div>
 
     <hr>
-    <div class="col-6 mx-auto">
-        <div class="bg-white rounded-3 p-3 shadow mt-3">
-            <h3 class="mt-3">Add a movie</h3>
-            <%= simple_form_for [@list, @bookmark] do |l| %>
-                <%= l.input :comment, placeholder: "Enter movie comment" %>
-                <%= l.association :movie, prompt: "Choose a movie" %>
-                <%= l.submit class: "btn btn-primary" %>
-            <% end %>
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-sm-12 bg-white rounded p-3">
+                <h4>Add a movie</h4>
+                <%= simple_form_for [@list, @bookmark] do |l| %>
+                    <%= l.input :comment, placeholder: "Enter movie comment" %>
+                    <%= l.association :movie, prompt: "Choose a movie" %>
+                    <%= l.submit class: "btn btn-primary rounded" %>
+                <% end %>
         </div>
     </div>
-
 </div>
