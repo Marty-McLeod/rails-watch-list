@@ -10,7 +10,12 @@
     <div class="row gap-3 gx-0">
         <% if @lists %>
             <% @lists.each do |l| %>
-                    <div class="div-list col-md-4 col-sm-10" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(<%= asset_path('list-cover-1.jpg')%>);
+                    <% if l.photo.key %>
+                        <% image_url = cl_image_path l.photo.key %>
+                    <% else %>
+                        <% image_url = asset_path('list-cover-1.jpg') %>
+                    <% end %>
+                    <div class="div-list col-md-4 col-sm-10" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(<%= image_url %>);
                         background-position: center;">
                         <a href=<%= list_path(l) %> ><h3><%= l.name %></h3></a>
                     </div>

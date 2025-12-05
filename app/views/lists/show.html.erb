@@ -1,6 +1,8 @@
-<div class="banner">
-            <h1 class="text-white fw-bold"><%= @list.name.capitalize %></h1>
-            <span class="badge-moviecount badge bg-warning"><%= @list.movies.count %> movies bookmarked</span>
+<div class="banner-show" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(<%= cl_image_path(@list.photo.key) %>); background-position: center; object-fit: cover;">
+    <%# <% image_path = cl_image_path @list.photo.key %>
+    <%# <%= cl_image_tag(@list.photo.key) %> 
+    <h1 class="text-white fw-bold" style="font-size: 3em;"><%= @list.name.capitalize %></h1>
+    <span class="badge-moviecount badge bg-warning"><%= @list.movies.count %> movies bookmarked</span>
 </div>            
 <div class="container py-4">
 

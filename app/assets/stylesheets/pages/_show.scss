@@ -1,15 +1,14 @@
-.banner {
+.banner-show {
     height: 300px;
-    background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), image-url("banner-2.jpg");
-    background-position: center;
-    object-fit: cover;
+    // Old fixed background styling:
+    // background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), image-url("banner-2.jpg");
     text-align: center;
     align-content: center;
-    
+
     h1 {
         font-size: 3em;
     }
-  
+
 }
 
 div .badge-moviecount {
